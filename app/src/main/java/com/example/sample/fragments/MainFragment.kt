@@ -1,12 +1,16 @@
 package com.example.sample.fragments
 
+import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -21,6 +25,7 @@ import com.example.sample.models.Details
 import com.example.sample.utils.ErrorListener
 import com.example.sample.viewModels.MainViewModel
 import com.sachin.milkdistributor.room.RoomDB
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
 
@@ -31,7 +36,7 @@ class MainFragment : Fragment(), RvInterface, ErrorListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setToolbar()
+      //  setToolbar()
     }
 
     override fun onCreateView(
@@ -62,10 +67,12 @@ class MainFragment : Fragment(), RvInterface, ErrorListener {
     }
 
     private fun setToolbar() {
+        Log.d("toolbarar", "Toolbar Set")
         //setHasOptionsMenu(true)
         val actionBar = (requireActivity() as AppCompatActivity).supportActionBar
         actionBar?.title = "Nature"
         actionBar?.setDisplayHomeAsUpEnabled(false)
+       // activity?.window!!.statusBarColor = Color.parseColor(R.color.primaryVarient.toString())
     }
 
     private fun setDataToRV() {
@@ -95,9 +102,11 @@ class MainFragment : Fragment(), RvInterface, ErrorListener {
         findNavController().navigate(directions)
     }
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onResume() {
 
-        setToolbar()
+        activity?.window!!.statusBarColor = Color.parseColor("#44671B")
+        //setToolbar()
         activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         super.onResume()
     }

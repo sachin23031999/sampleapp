@@ -22,7 +22,7 @@ class CustomJsonObjectRequest(
     @Throws(AuthFailureError::class)
     override fun getHeaders(): MutableMap<String, String> {
         val headers = HashMap<String, String>()
-        headers["Content-Type"] = "application/json"
+        //headers["Content-Type"] = "application/json"
         val auth = "Basic " + Base64.encodeToString(mCredentials.toByteArray(),
             Base64.NO_WRAP)
         headers["Authorization"] = auth

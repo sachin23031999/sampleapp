@@ -10,7 +10,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="#268329" />
+            android:background="@color/toolbar" />
 
     <fragment
         android:id="@+id/nav_host_fragment"
